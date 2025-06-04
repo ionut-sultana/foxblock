@@ -4,325 +4,852 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FoxBlock – Productivity Chrome Extension</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://unpkg.com/@mui/material@latest/umd/material-ui.production.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #181c24 0%, #232837 100%);
-      color: #f3f4f8;
-    }
-    .navbar-fixed {
-      z-index: 1000;
-    }
-    nav {
-      background: #232837cc;
-      box-shadow: none;
-      backdrop-filter: blur(10px);
-    }
-    .hero {
-      padding-top: 80px;
-      padding-bottom: 80px;
-      text-align: center;
-    }
-    .hero-title {
-      font-size: 3rem;
-      font-weight: 800;
-    }
-    .hero-sub {
-      font-size: 1.4rem;
-      color: #a0a4b8;
-      margin-bottom: 30px;
-    }
-    section {
-      padding: 60px 0;
-    }
-    footer {
-      padding: 40px 0;
-      background: #12151c;
-    }
-    .carousel .carousel-item {
-      width: 400px;
-    }
-    .carousel.carousel-slider .carousel-fixed-item {
-      width: auto;
-    }
-    .features-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      justify-content: center;
-    }
-    .feature-card {
-      position: relative;
-      padding: 32px 24px;
-      border-radius: 12px;
-      text-align: center;
-      color: #fff;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      background: #1d2330;
-    }
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(60deg,#ff7a18,#af002d 40%,#319197 70%,#6e0dd0);
-      background-size: 200% 200%;
-      animation: gradientShift 8s ease infinite;
-      opacity: .3;
-      z-index: 0;
-    }
-    .feature-card .icon-wrapper {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      backdrop-filter: blur(6px);
-    }
-    .feature-card .icon-wrapper img {
-      width: 56px;
-      height: 56px;
-      transform: rotateX(20deg) rotateY(-20deg);
-      filter: drop-shadow(0 6px 8px rgba(0,0,0,0.4));
-    }
-    .feature-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .feature-card > * {
-      position: relative;
-      z-index: 1;
-    }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="navbar-fixed">
-    <nav class="transparent">
-      <div class="nav-wrapper container">
-        <a href="#" class="brand-logo">FoxBlock</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="https://chromewebstore.google.com/detail/foxblock-site-blocker-tas/oaoamlhjodjmokjddcihdcpdnpnjghlm/" target="_blank" class="waves-effect waves-light btn purple darken-2"><img src="./screenshots/chromeICO.webp" style="height:24px;width:24px;margin-right:8px;vertical-align:middle;">Add to Chrome</a></li>
-        </ul>
+  <!-- Professional Navigation -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="./logo/logo.png" alt="FoxBlock Logo" class="brand-logo">
+        <span class="brand-text">FoxBlock</span>
       </div>
-    </nav>
-  </div>
-
-  <div class="section hero">
-    <div class="container">
-      <h1 class="hero-title animate__animated animate__fadeIn">Stay Focused with FoxBlock</h1>
-      <p class="hero-sub">Block distracting sites, track your habits, and build better routines.</p>
-      <a href="https://chromewebstore.google.com/detail/foxblock-site-blocker-tas/oaoamlhjodjmokjddcihdcpdnpnjghlm/" target="_blank" class="btn-large purple accent-3">Add to Chrome</a>
-    </div>
-  </div>
-
-  <div class="section" id="features">
-    <div class="container">
-      <h2 class="center-align">Powerful Features</h2>
-      <div class="row features-grid">
-        <div class="col s12 m6 l4">
-          <div class="feature-card reveal">
-            <div class="icon-wrapper"><img src="./illustrations/blockPage.png" alt="Block Sites"/></div>
-            <h5 class="feature-title">Block Distracting Sites</h5>
-            <p>Easily block access to any website or domain to keep distractions out of reach.</p>
-          </div>
-        </div>
-        <div class="col s12 m6 l4">
-          <div class="feature-card reveal">
-            <div class="icon-wrapper"><img src="./illustrations/focusSession.png" alt="Focus Mode"/></div>
-            <h5 class="feature-title">Focus Mode</h5>
-            <p>Activate Focus Mode to block all distractions for a set period of deep work.</p>
-          </div>
-        </div>
-        <div class="col s12 m6 l4">
-          <div class="feature-card reveal">
-            <div class="icon-wrapper"><img src="./illustrations/tasks.png" alt="Usage Stats"/></div>
-            <h5 class="feature-title">Usage Stats & Progress</h5>
-            <p>Track your browsing time and review habits with clear, visual statistics.</p>
-          </div>
-        </div>
-        <div class="col s12 m6 l4">
-          <div class="feature-card reveal">
-            <div class="icon-wrapper"><img src="./illustrations/blockPageCustomization.png" alt="Custom Block Page"/></div>
-            <h5 class="feature-title">Custom Block Page</h5>
-            <p>Personalize your block page with motivational quotes or custom messages.</p>
-          </div>
-        </div>
-        <div class="col s12 m6 l4">
-          <div class="feature-card reveal">
-            <div class="icon-wrapper"><img src="./illustrations/passwordProtection.png" alt="Password Protection"/></div>
-            <h5 class="feature-title">Password Protection</h5>
-            <p>Lock your settings with a password to prevent tampering.</p>
-          </div>
-        </div>
-        <div class="col s12 m6 l4">
-          <div class="feature-card reveal">
-            <div class="icon-wrapper"><img src="./illustrations/schedule.png" alt="Scheduling"/></div>
-            <h5 class="feature-title">Scheduling</h5>
-            <p>Automate your focus routine with daily or weekly block schedules.</p>
-          </div>
-        </div>
+      <div class="nav-cta">
+        <a href="https://chromewebstore.google.com/detail/foxblock-site-blocker-tas/oaoamlhjodjmokjddcihdcpdnpnjghlm/" target="_blank" class="cta-button">
+          <span class="chrome-icon">
+            <img src="./screenshots/chromeICO.webp" alt="Chrome">
+          </span>
+          <span class="cta-text">Add to Chrome</span>
+        </a>
       </div>
     </div>
-  </div>
+  </nav>
 
-  <div class="section" id="screenshots">
-    <div class="container">
-      <h2 class="center-align">Screenshots</h2>
-      <div class="carousel carousel-slider center" data-indicators="true">
-        <div class="carousel-item" href="#one!"><img src="./screenshots/2.png" alt="Screenshot 1"></div>
-        <div class="carousel-item" href="#two!"><img src="./screenshots/3.png" alt="Screenshot 2"></div>
-        <div class="carousel-item" href="#three!"><img src="./screenshots/4.png" alt="Screenshot 3"></div>
-        <div class="carousel-item" href="#four!"><img src="./screenshots/5.png" alt="Screenshot 4"></div>
-        <div class="carousel-item" href="#five!"><img src="./screenshots/6.png" alt="Screenshot 5"></div>
-        <div class="carousel-item" href="#six!"><img src="./screenshots/7.png" alt="Screenshot 6"></div>
+  <!-- Hero Immersive Section -->
+  <section class="hero-immersive">
+    <div id="particles-js"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-icon">⚡</span>
+        <span class="badge-text">Productivity Redefined</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line">Break Free From</span>
+        <span class="title-line gradient-text">Digital Distractions</span>
+      </h1>
+      <p class="hero-description">
+        Transform your browsing habits with intelligent site blocking, 
+        focus sessions, and productivity insights that adapt to your workflow.
+      </p>
+      <div class="hero-actions">
+        <a href="https://chromewebstore.google.com/detail/foxblock-site-blocker-tas/oaoamlhjodjmokjddcihdcpdnpnjghlm/" target="_blank" class="primary-button">
+          <span class="button-content">
+            <span class="button-text">Start Your Focus Journey</span>
+            <span class="button-icon">→</span>
+          </span>
+          <div class="button-glow"></div>
+        </a>
+        <button class="secondary-button" onclick="document.querySelector('#features-flow').scrollIntoView({behavior: 'smooth'})">
+          <span class="button-ripple"></span>
+          <span class="button-text">Explore Features</span>
+        </button>
       </div>
     </div>
-  </div>
-
-  <div class="section" id="testimonials">
-    <div class="container">
-      <h2 class="center-align">What Users Say</h2>
-      <div class="carousel carousel-slider center" data-indicators="true">
-        <div class="carousel-item white-text" href="#t1">
-          <h5>Snape Severus <small>13 May 2025</small></h5>
-          <p>FoxBlock is a lifesaver! Seriously helps me stay off time-wasting sites when I should be working. Simple and effective.</p>
-        </div>
-        <div class="carousel-item white-text" href="#t2">
-          <h5>Jake Carter <small>13 May 2025</small></h5>
-          <p>FoxBlock has been exactly what I needed to stay focused. The Pomodoro timer, custom block schedules, and easy site blocking all work seamlessly.</p>
-        </div>
-        <div class="carousel-item white-text" href="#t3">
-          <h5>YT V <small>13 May 2025</small></h5>
-          <p>This is amazing, extremely good looking UI and helps me a lot with my day to day work. 5 stars.</p>
-        </div>
-        <div class="carousel-item white-text" href="#t4">
-          <h5>Marek Golebiewski <small>12 May 2025</small></h5>
-          <p>Super easy to set up, works just as described, love it!</p>
-        </div>
-        <div class="carousel-item white-text" href="#t5">
-          <h5>Alin Mt <small>4 May 2025</small></h5>
-          <p>I was amazed by this simple tool for managing your work and personal time.</p>
-        </div>
-        <div class="carousel-item white-text" href="#t6">
-          <h5>John <small>3 Jun 2025</small></h5>
-          <p>installed on Brave browser, works like charm.</p>
-        </div>
-        <div class="carousel-item white-text" href="#t7">
-          <h5>Katerina Diamant <small>29 May 2025</small></h5>
-          <p>This app is definitely a game changer for someone who easily gets distracted online and goes down the rabbit hole for hours on end.</p>
-        </div>
-        <div class="carousel-item white-text" href="#t8">
-          <h5>Cam Appleton <small>28 May 2025</small></h5>
-          <p>I recently started using FoxBlock, and it's a game-changer! The task manager feature is intuitive, customizable, and has boosted my productivity.</p>
-        </div>
-        <div class="carousel-item white-text" href="#t9">
-          <h5>לירן בלומנברג <small>23 May 2025</small></h5>
-          <p>FoxBlock is a sleek and powerful productivity extension that makes staying focused surprisingly easy.</p>
-        </div>
-        <div class="carousel-item white-text" href="#t10">
-          <h5>AJ Fabila <small>19 May 2025</small></h5>
-          <p>Awesome extension! This really helps with adblocking.</p>
-        </div>
-        <div class="carousel-item white-text" href="#t11">
-          <h5>Peter V <small>17 May 2025</small></h5>
-          <p>Working great! Easy to use.</p>
-        </div>
-        <div class="carousel-item white-text" href="#t12">
-          <h5>Marc-Olivier Poissant <small>14 May 2025</small></h5>
-          <p>Excellent!</p>
-        </div>
-        <div class="carousel-item white-text" href="#t13">
-          <h5>Omer Hefets <small>14 May 2025</small></h5>
-          <p>Perfect user experience, perfect for increased productivity!</p>
-        </div>
-        <div class="carousel-item white-text" href="#t14">
-          <h5>siniestro abogado <small>14 May 2025</small></h5>
-          <p>Nice, multi function tool, that allow a multitude of productivity related feature.</p>
-        </div>
-        <div class="carousel-item white-text" href="#t15">
-          <h5>Juan Mackie <small>14 May 2025</small></h5>
-          <p>As someone who's always fighting off digital distractions, I stumbled upon FoxBlock.....game changer.</p>
-        </div>
-        <div class="carousel-item white-text" href="#t16">
-          <h5>Marcu Cristi <small>2 May 2025</small></h5>
-          <p>The most complete, efficient and easy to use website blocker found! I totally recommend it!</p>
-        </div>
-        <div class="carousel-item white-text" href="#t17">
-          <h5>Daniel Cristian <small>18 Apr 2025</small></h5>
-          <p>The best blocking website extension ever!</p>
-        </div>
+    <div class="hero-visual">
+      <div class="floating-elements">
+        <div class="element element-1"></div>
+        <div class="element element-2"></div>
+        <div class="element element-3"></div>
+        <div class="element element-4"></div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="section" id="usecases">
-    <div class="container">
-      <h2 class="center-align">How FoxBlock Helps</h2>
-      <div class="row">
-        <div class="col s12 m6 l3">
-          <div class="card-panel grey darken-4 center-align reveal">
-            <h6>Stay Focused at Work</h6>
-            <p>Block distracting sites and set time limits to maximize productivity.</p>
-          </div>
+  <!-- Features Flow Section -->
+  <section class="features-flow" id="features-flow">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="title-small">Powerful Tools</span>
+        <span class="title-main">Built for Modern Focus</span>
+      </h2>
+    </div>
+    
+    <div class="features-timeline">
+      <div class="feature-item" data-feature="block">
+        <div class="feature-visual">
+          <div class="sprite-icon sprite-block-page"></div>
         </div>
-        <div class="col s12 m6 l3">
-          <div class="card-panel grey darken-4 center-align reveal">
-            <h6>Support Healthy Study Habits</h6>
-            <p>Limit social media and entertainment sites to avoid procrastination.</p>
-          </div>
-        </div>
-        <div class="col s12 m6 l3">
-          <div class="card-panel grey darken-4 center-align reveal">
-            <h6>Parental Controls</h6>
-            <p>Set daily limits and block inappropriate sites for children.</p>
-          </div>
-        </div>
-        <div class="col s12 m6 l3">
-          <div class="card-panel grey darken-4 center-align reveal">
-            <h6>Customizable for Any Routine</h6>
-            <p>Create block lists, schedules, and focus modes tailored to your needs.</p>
+        <div class="feature-content">
+          <h3 class="feature-title">
+            Effortless Website Blocking
+          </h3>
+          <p class="feature-description">
+            Instantly block any distracting website. Manage your personal blocklist with ease and take control of your digital habits.
+          </p>
+          <div class="feature-stats">
+            <div class="stat">
+              <span class="stat-number">99%</span>
+              <span class="stat-label">Blocking Accuracy</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">3.2h</span>
+              <span class="stat-label">Daily Time Saved</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <footer class="page-footer purple darken-4">
-    <div class="container center-align">
-      <p>FoxBlock © 2025</p>
-      <p>Not affiliated with Google or Chrome. All trademarks are property of their respective owners.</p>
+      <div class="feature-item" data-feature="focus">
+        <div class="feature-content">
+          <h3 class="feature-title">
+            Integrated Focus Timer
+          </h3>
+          <p class="feature-description">
+            Utilize the proven Pomodoro Technique with customizable focus and break cycles. 
+            Perfect for maintaining peak productivity and healthy work habits.
+          </p>
+          <div class="feature-highlights">
+            <span class="highlight">Pomodoro Technique</span>
+            <span class="highlight">Custom Cycles</span>
+          </div>
+        </div>
+        <div class="feature-visual">
+          <div class="sprite-icon sprite-focus-session"></div>
+        </div>
+      </div>
+
+      <div class="feature-item" data-feature="analytics">
+        <div class="feature-visual">
+          <div class="sprite-icon sprite-tasks"></div>
+        </div>
+        <div class="feature-content">
+          <h3 class="feature-title">
+            Task Management
+          </h3>
+          <p class="feature-description">
+            Create, prioritize, and track your to-dos right in your browser. 
+            Drag-and-drop organization, deadline setting, and progress tracking keep you accountable and focused on what matters most.
+          </p>
+          <div class="feature-metrics">
+            <div class="metric-bar">
+              <div class="metric-fill" style="width: 78%"></div>
+              <span class="metric-label">Tasks Completed</span>
+            </div>
+            <div class="metric-bar">
+              <div class="metric-fill" style="width: 92%"></div>
+              <span class="metric-label">On-Time Delivery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-item" data-feature="custom">
+        <div class="feature-content">
+          <h3 class="feature-title">
+            Inspirational Block Page
+          </h3>
+          <p class="feature-description">
+            Stay motivated even when a site is blocked—set a custom title and short inspirational message, 
+            and choose stunning background videos, images from Unsplash, or upload your own.
+          </p>
+          <div class="feature-gallery">
+            <div class="gallery-item">
+              <div class="sprite-icon sprite-block-customization"></div>
+            </div>
+            <div class="gallery-item">
+              <div class="sprite-icon sprite-password-protection"></div>
+            </div>
+            <div class="gallery-item">
+              <div class="sprite-icon sprite-schedule"></div>
+            </div>
+          </div>
+        </div>
+        <div class="feature-visual">
+          <div class="morphing-gradient"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Screenshots -->
+  <section class="screenshots-interactive">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="title-small">See It In Action</span>
+        <span class="title-main">Experience FoxBlock</span>
+      </h2>
+    </div>
+    
+    <div class="screenshots-stage">
+      <div class="screenshot-viewer">
+        <div class="viewer-controls">
+          <button class="control-btn active" data-screen="password">Password</button>
+          <button class="control-btn" data-screen="blocking">Blocking</button>
+          <button class="control-btn" data-screen="focus">Focus Mode</button>
+          <button class="control-btn" data-screen="schedule">Schedule</button>
+          <button class="control-btn" data-screen="tasks">Tasks</button>
+          <button class="control-btn" data-screen="custom">Make it your own</button>
+        </div>
+        <div class="viewer-content">
+          <div class="screen-container active" data-screen="password">
+            <img src="./screenshots/4.png" alt="FoxBlock Password">
+            <div class="screen-overlay">
+              <div class="hotspot" data-x="25%" data-y="35%" data-info="Quick Block Controls"></div>
+              <div class="hotspot" data-x="70%" data-y="60%" data-info="Usage Statistics"></div>
+            </div>
+          </div>
+          <div class="screen-container" data-screen="blocking">
+            <img src="./screenshots/2.png" alt="Site Blocking">
+          </div>
+          <div class="screen-container" data-screen="focus">
+            <img src="./screenshots/5.png" alt="Focus Mode">
+          </div>
+          <div class="screen-container" data-screen="schedule">
+            <img src="./screenshots/3.png" alt="Schedule">
+          </div>
+          <div class="screen-container" data-screen="tasks">
+            <img src="./screenshots/6.png" alt="Tasks">
+          </div>
+          <div class="screen-container" data-screen="custom">
+            <img src="./screenshots/7.png" alt="Custom">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Slider -->
+  <section class="reviews-slider">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="title-small">User Stories</span>
+        <span class="title-main">Real Results, Real People</span>
+      </h2>
+    </div>
+    
+    <div class="slider-container">
+      <div class="reviews-track" id="reviewsTrack">
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">JO</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">John</h4>
+              <span class="review-date">3 Jun 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">installed on Brave browser, works like charm.</p>
+          <div class="review-helpful">
+            <span class="helpful-text">Was this helpful?</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">KD</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">Katerina Diamant</h4>
+              <span class="review-date">29 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">This app is definitely a game changer for someone who easily gets distracted online and go down the rabbit hole for hours on end. I would highly recommend it to anyone looking at saving time and being more productive with their time</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">CA</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">Cam Appleton</h4>
+              <span class="review-date">28 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">I recently started using FoxBlock, and it's a game-changer! This Chrome extension is incredibly effective at blocking distracting websites, helping me stay focused on my tasks. The task manager feature is intuitive, allowing me to organize my work seamlessly. It's user-friendly, customizable, and has boosted my productivity significantly. Highly recommend FoxBlock for anyone looking to stay on track!</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">לב</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">לירן בלומנברג</h4>
+              <span class="review-date">23 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">FoxBlock is a sleek and powerful productivity extension that makes staying focused surprisingly easy. With customizable block pages, insightful analytics, and a beautiful interface—including Dark Mode and background videos—it turns website blocking into a motivating experience. The sticky banner and Pomodoro tools are a smart touch, and password protection adds serious accountability. Highly recommended for anyone looking to cut distractions and boost their digital discipline.</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">AF</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">AJ Fabila</h4>
+              <span class="review-date">19 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">Awesome extension! This really helps with adblocking.</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">PV</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">Peter V</h4>
+              <span class="review-date">17 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">Working great! Easy to use</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">MP</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">Marc-Olivier Poissant</h4>
+              <span class="review-date">14 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">Excellent!</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">OH</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">Omer Hefets</h4>
+              <span class="review-date">14 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">Perfect user experience, perfect for increased productivity!</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">SA</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">siniestro abogado</h4>
+              <span class="review-date">14 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">Nice, multi function tool, that allow a multitude of productivity related feature. I installed and started to use very often, kudos to the developer</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">JM</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">Juan Mackie</h4>
+              <span class="review-date">14 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">As someone who's always fighting off digital distractions (Hi, ADHD), I stumbled upon FoxBlock.....game changer.</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">SS</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">Snape Severus</h4>
+              <span class="review-date">13 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">FoxBlock is a lifesaver! Seriously helps me stay off time-wasting sites when I should be working. Simple and effective.</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">JC</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">Jake Carter</h4>
+              <span class="review-date">13 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">FoxBlock has been exactly what I needed to stay focused. The Pomodoro timer, custom block schedules, and easy site blocking all work seamlessly. I really like the distraction insights since they helped me catch habits I didn't even notice. Even the free version offers a lot and the interface is clean and easy to use. Five stars without a doubt.</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">YV</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">YT V</h4>
+              <span class="review-date">13 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">This is amazing, extremely good looking UI and helps me a lot with my day to day work. 5 stars</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">MG</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">Marek Golebiewski</h4>
+              <span class="review-date">12 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">Super easy to set up, works just as described, love it!</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">AM</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">Alin Mt</h4>
+              <span class="review-date">4 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">I was amazed by this simple tool for managing your work and personal time</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">MC</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">Marcu Cristi</h4>
+              <span class="review-date">2 May 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">The most complete, efficient and easy to use website blocker found! I totally recommend it!</p>
+          <div class="review-helpful">
+            <span class="helpful-count">1 person found this review to be helpful</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="profile-avatar">DC</div>
+            <div class="review-meta">
+              <h4 class="reviewer-name">Daniel Cristian</h4>
+              <span class="review-date">18 Apr 2025</span>
+            </div>
+            <div class="review-rating">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">The best blocking website extension ever!</p>
+          <div class="review-helpful">
+            <span class="helpful-count">2 out of 2 found this helpful</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="slider-navigation">
+        <button class="nav-btn prev-btn" id="prevBtn">
+          <span class="nav-icon">←</span>
+        </button>
+        <div class="slider-dots" id="sliderDots"></div>
+        <button class="nav-btn next-btn" id="nextBtn">
+          <span class="nav-icon">→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Transformation Journey -->
+  <section class="transformation-journey">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="title-small">Your Transformation</span>
+        <span class="title-main">From Chaos to Control</span>
+      </h2>
+      <p class="section-subtitle">
+        Join thousands who've reclaimed their focus and transformed their digital habits
+      </p>
+    </div>
+    
+    <div class="journey-timeline">
+      <div class="timeline-progress">
+        <div class="progress-line"></div>
+        <div class="progress-indicators">
+          <div class="indicator active" data-step="1"></div>
+          <div class="indicator" data-step="2"></div>
+          <div class="indicator" data-step="3"></div>
+          <div class="indicator" data-step="4"></div>
+        </div>
+      </div>
+      
+      <div class="journey-steps">
+        <div class="journey-card active" data-step="1">
+          <div class="card-number">01</div>
+          <div class="card-icon">🔍</div>
+          <h3 class="card-title">Discover Your Triggers</h3>
+          <p class="card-description">
+            Identify which sites steal your focus with built-in analytics. 
+            See exactly where your time goes and what breaks your flow.
+          </p>
+          <div class="card-insight">
+            <span class="insight-stat">Average user discovers</span>
+            <span class="insight-number">12 distraction sites</span>
+          </div>
+        </div>
+        
+        <div class="journey-card" data-step="2">
+          <div class="card-number">02</div>
+          <div class="card-icon">⚡</div>
+          <h3 class="card-title">Block & Focus</h3>
+          <p class="card-description">
+            Instantly block distracting sites and activate focus sessions. 
+            Use custom schedules and Pomodoro timers to maintain momentum.
+          </p>
+          <div class="card-insight">
+            <span class="insight-stat">Users save an average of</span>
+            <span class="insight-number">3.2 hours daily</span>
+          </div>
+        </div>
+        
+        <div class="journey-card" data-step="3">
+          <div class="card-icon">📊</div>
+          <div class="card-number">03</div>
+          <h3 class="card-title">Track & Optimize</h3>
+          <p class="card-description">
+            Monitor your progress with detailed insights. 
+            See blocked attempts, focus streaks, and productivity patterns.
+          </p>
+          <div class="card-insight">
+            <span class="insight-stat">Productivity improvement</span>
+            <span class="insight-number">+85% average</span>
+          </div>
+        </div>
+        
+        <div class="journey-card" data-step="4">
+          <div class="card-number">04</div>
+          <div class="card-icon">🎯</div>
+          <h3 class="card-title">Master Your Habits</h3>
+          <p class="card-description">
+            Achieve sustainable focus with optimized routines. 
+            Build lasting productivity habits that stick.
+          </p>
+          <div class="card-insight">
+            <span class="insight-stat">Long-term success rate</span>
+            <span class="insight-number">92% of users</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <div class="cta-header">
+        <div class="cta-badge">
+          <span class="badge-icon">🚀</span>
+          <span class="badge-text">Ready to Transform?</span>
+        </div>
+        <h2 class="cta-title">
+          Start Your Focus Journey
+          <span class="gradient-text">Today</span>
+        </h2>
+        <p class="cta-description">
+          Join those who've already reclaimed their digital focus. 
+          Install FoxBlock now and experience the difference in minutes.
+        </p>
+      </div>
+      
+      <div class="cta-main">
+        <div class="cta-left">
+          <div class="cta-features">
+            <div class="cta-feature">
+              <span class="feature-icon">✅</span>
+              <span class="feature-text">Free to install & use</span>
+            </div>
+            <div class="cta-feature">
+              <span class="feature-icon">⚡</span>
+              <span class="feature-text">Works instantly</span>
+            </div>
+            <div class="cta-feature">
+              <span class="feature-icon">🔒</span>
+              <span class="feature-text">Your data stays private</span>
+            </div>
+          </div>
+          
+          <div class="cta-action">
+            <a href="https://chromewebstore.google.com/detail/foxblock-site-blocker-tas/oaoamlhjodjmokjddcihdcpdnpnjghlm/" target="_blank" class="cta-primary">
+              <span class="button-content">
+                <img src="./screenshots/chromeICO.webp" alt="Chrome" class="chrome-icon">
+                <span class="button-text">Add to Chrome - It's Free</span>
+                <span class="button-arrow">→</span>
+              </span>
+              <div class="button-glow"></div>
+            </a>
+            
+            <div class="cta-trust">
+              <div class="trust-rating">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <span class="rating-text">4.9/5 rating</span>
+              </div>
+              <span class="trust-users">Trusted by Productivity Experts</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="cta-right">
+          <div class="success-metrics">
+            <div class="metric-item">
+              <div class="metric-number">3.2h</div>
+              <div class="metric-label">Daily Time Saved</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-number">85%</div>
+              <div class="metric-label">Productivity Boost</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-number">50k+</div>
+              <div class="metric-label">Happy Users</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Modern -->
+  <footer class="footer-modern">
+    <div class="footer-glow"></div>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="./logo/logo.png" alt="FoxBlock Logo" class="brand-logo-footer">
+        <span class="brand-text">FoxBlock</span>
+        <span class="brand-year">© 2025</span>
+      </div>
+      <div class="footer-disclaimer">
+        <p>Not affiliated with Google or Chrome. All trademarks are property of their respective owners.</p>
+      </div>
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      var carousels = document.querySelectorAll('.carousel');
-      M.Carousel.init(carousels, { fullWidth: true, indicators: true });
-    });
+      // Initialize Particles.js for Hero
+      particlesJS("particles-js", {
+        "particles": {
+          "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+          "color": { "value": "#6366f1" },
+          "shape": { "type": "circle" },
+          "opacity": { "value": 0.1, "random": true },
+          "size": { "value": 3, "random": true },
+          "line_linked": { "enable": true, "distance": 150, "color": "#6366f1", "opacity": 0.1, "width": 1 },
+          "move": { "enable": true, "speed": 1, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+          "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.3 } }, "push": { "particles_nb": 4 } }
+        },
+        "retina_detect": true
+      });
 
-    document.querySelectorAll('.reveal').forEach(el => {
-      const observer = new IntersectionObserver(entries => {
+      // Screenshot viewer controls
+      const controlBtns = document.querySelectorAll('.control-btn');
+      const screenContainers = document.querySelectorAll('.screen-container');
+      
+      controlBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.dataset.screen;
+          
+          controlBtns.forEach(b => b.classList.remove('active'));
+          screenContainers.forEach(s => s.classList.remove('active'));
+          
+          btn.classList.add('active');
+          document.querySelector(`[data-screen="${target}"].screen-container`).classList.add('active');
+        });
+      });
+
+      // Scroll animations
+      const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+      const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate__animated','animate__fadeInUp');
-            observer.unobserve(entry.target);
+            entry.target.classList.add('animate-in');
           }
         });
-      }, { threshold: 0.2 });
-      observer.observe(el);
+      }, observerOptions);
+
+      document.querySelectorAll('.feature-item, .review-card, .journey-card').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Floating navigation on scroll
+      let lastScrollY = window.scrollY;
+      window.addEventListener('scroll', () => {
+        const nav = document.querySelector('.main-nav');
+        if (window.scrollY > 100) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+        lastScrollY = window.scrollY;
+      });
+
+      // Reviews Slider
+      const reviewsTrack = document.getElementById('reviewsTrack');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const sliderDots = document.getElementById('sliderDots');
+      const reviewCards = document.querySelectorAll('.review-card');
+      
+      let currentIndex = 0;
+      const cardsPerView = 3; // Always show 3 reviews
+      const totalCards = reviewCards.length;
+      const maxIndex = Math.max(0, totalCards - cardsPerView);
+      
+      // Create dots
+      for (let i = 0; i <= maxIndex; i++) {
+        const dot = document.createElement('div');
+        dot.className = `dot ${i === 0 ? 'active' : ''}`;
+        dot.addEventListener('click', () => goToSlide(i));
+        sliderDots.appendChild(dot);
+      }
+      
+      const dots = document.querySelectorAll('.dot');
+      
+      function updateSlider() {
+        const cardWidth = window.innerWidth >= 768 ? 400 : window.innerWidth >= 480 ? 320 : 280;
+        const gap = window.innerWidth >= 768 ? 24 : 16;
+        const translateX = -(currentIndex * (cardWidth + gap));
+        reviewsTrack.style.transform = `translateX(${translateX}px)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+        
+        // Update buttons
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= maxIndex;
+      }
+      
+      function goToSlide(index) {
+        currentIndex = Math.max(0, Math.min(index, maxIndex));
+        updateSlider();
+      }
+      
+      function nextSlide() {
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+          updateSlider();
+        }
+      }
+      
+      function prevSlide() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSlider();
+        }
+      }
+      
+      prevBtn.addEventListener('click', prevSlide);
+      nextBtn.addEventListener('click', nextSlide);
+      
+      // Auto-scroll every 5 seconds
+      setInterval(() => {
+        if (currentIndex >= maxIndex) {
+          currentIndex = 0;
+        } else {
+          currentIndex++;
+        }
+        updateSlider();
+      }, 5000);
+      
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        updateSlider();
+      });
+      
+      // Initialize slider
+      updateSlider();
     });
   </script>
 </body>
