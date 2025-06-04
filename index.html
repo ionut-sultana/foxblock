@@ -4,986 +4,292 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FoxBlock – Productivity Chrome Extension</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root {
-      --bg: #181c24;
-      --card: #232837cc;
-      --accent: #7c3aed;
-      --accent2: #a78bfa;
-      --text: #f3f4f8;
-      --muted: #a0a4b8;
-      --border: #2a2f40;
-      --radius: 18px;
-      --hero-gradient: linear-gradient(90deg, #490274 0%, #12001f 100%);
-      --glass: rgba(35, 40, 55, 0.65);
-      --glass-blur: blur(18px);
-      --glass-border: rgba(255,255,255,0.13);
-    }
-    html, body {
-      margin: 0;
-      padding: 0;
+    body {
+      font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #181c24 0%, #232837 100%);
-      color: var(--text);
-      font-family: 'Inter', Arial, sans-serif;
-      min-height: 100vh;
+      color: #f3f4f8;
     }
-    body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, label {
-      font-family: 'Inter', Arial, sans-serif;
+    .navbar-fixed {
+      z-index: 1000;
     }
-    a { color: var(--accent); text-decoration: none; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 32px 16px; }
-    .fade-in { opacity: 0; }
+    nav {
+      background: #232837cc;
+      box-shadow: none;
+      backdrop-filter: blur(10px);
+    }
     .hero {
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 45px;
-        margin-bottom: 15px;
-        flex-wrap: wrap;
-        min-height: 380px;
-        overflow: hidden;
-        background: var(--glass);
-        box-shadow: 0 8px 40px #0003;
-        backdrop-filter: var(--glass-blur);
-        border: 1.5px solid var(--glass-border);
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; right: 0; height: 100%;
-      background: var(--hero-gradient);
-      opacity: 0.18;
-      z-index: 0;
-    }
-    .hero-logo-inline {
-      display: inline-flex;
-      align-items: center;
-      margin-left: 18px;
-      vertical-align: middle;
-      height: 48px;
-    }
-    .hero-logo-inline img {
-      height: 48px;
-      width: auto;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px #0002;
-      background: var(--card);
-    }
-    .hero-logo {
-      display: none;
-    }
-    .hero-content {
-      flex: 1;
-      min-width: 260px;
-      z-index: 1;
-      padding: 32px 60px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      text-align: center;
     }
     .hero-title {
-      font-size: 3.6rem;
+      font-size: 3rem;
       font-weight: 800;
-      margin: 0 0 32px 0;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      color: #fff;
-      text-shadow: 0 2px 16px rgba(73, 2, 116, 0.10), 0 1px 0 #fff1;
-      display: flex;
-      align-items: center;
-      flex-direction: row-reverse;
-      justify-content: flex-end;
-      gap: 20px;
     }
-    .why-title, .features-title, .testimonials-title, .slider-title, .usecases-title {
-      font-size: 2.4rem;
-      font-weight: 400 !important;
-      text-align: center;
-      margin-bottom: 40px;
-      margin-top: 0;
-      letter-spacing: 0.04em;
-      line-height: 1.15;
-      color: #fff;
-      text-shadow: 0 2px 16px rgba(73, 2, 116, 0.10), 0 1px 0 #fff1;
+    .hero-sub {
+      font-size: 1.4rem;
+      color: #a0a4b8;
+      margin-bottom: 30px;
     }
-    .hero-desc {
-      font-size: 1.35rem;
-      color: var(--muted);
-      margin-bottom: 12px;
-      max-width: 600px;
+    section {
+      padding: 60px 0;
     }
-    .cta-btn {
-      background: var(--accent);
-      color: #fff;
-      font-weight: 700;
-      padding: 18px 44px;
-      border: none;
-      border-radius: var(--radius);
-      font-size: 1.25rem;
-      cursor: pointer;
-      box-shadow: 0 2px 8px #0002;
-      transition: background 0.2s;
-      letter-spacing: 0.5px;
-      margin-top: 8px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    footer {
+      padding: 40px 0;
+      background: #12151c;
     }
-    .cta-btn:hover { background: #5f1a8a; }
-    .cta-btn .chrome-icon {
-      width: 28px;
-      height: 28px;
-      display: inline-block;
-      vertical-align: middle;
-      margin-right: 4px;
-      background: none;
-      border-radius: 50%;
-      box-shadow: 0 1px 4px #0002;
+    .carousel .carousel-item {
+      width: 400px;
     }
-    .hero-video {
-        z-index: 1;
-        min-width: 340px;
-        max-width: 600px;
-        width: 100%;
-        border-radius: 24px;
-        overflow: hidden;
-        box-shadow: 0 4px 32px #0005;
-        background: var(--glass);
-        border: 1.5px solid var(--glass-border);
-        backdrop-filter: var(--glass-blur);
-        margin-right: 32px;
-        margin-top: 24px;
-        height: 300px;
-    }
-    .why {
-      margin: 64px 0 48px 0;
-    }
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 32px;
-      justify-items: center;
-    }
-    .why-card { 
-      background: var(--glass);
-      border-radius: var(--radius);
-      padding: 32px 24px 24px 24px;
-      box-shadow: 0 2px 16px #0002;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 200px;
-      max-width: 340px;
-      backdrop-filter: var(--glass-blur);
-    }
-    .why-icon {
-      font-size: 2.5rem;
-      margin-bottom: 14px;
-      color: var(--accent);
-    }
-    .why-title-card {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      text-align: center;
-    }
-    .why-desc {
-      color: var(--muted);
-      font-size: 1.05rem;
-      text-align: center;
-    }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
-      margin-bottom: 64px;
-    }
-    .feature-card {
-      background: var(--glass);
-      border-radius: var(--radius);
-      padding: 36px 24px 28px 24px;
-      box-shadow: 0 2px 16px #0002;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 230px;
-      transition: box-shadow 0.2s, border 0.2s;
-      backdrop-filter: var(--glass-blur);
-    }
-    .feature-card:hover {
-      box-shadow: 0 8px 32px #0004;
-    }
-    .feature-card img, .feature-card svg {
-      width: 90px;
-      height: 90px;
-      margin-bottom: 18px;
-      border-radius: 16px;
-      background: #20243a;
-      object-fit: contain;
-      box-shadow: 0 2px 8px #0002;
-    }
-    .feature-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-    .feature-desc {
-      color: var(--muted);
-      font-size: 1.05rem;
-      text-align: center;
-    }
-    .usecases {
-      margin-bottom: 64px;
-    }
-    .usecases-title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 40px;
-      text-align: center;
-      letter-spacing: 0.04em;
-      line-height: 1.15;
-      color: #fff;
-      text-shadow: 0 2px 16px rgba(73, 2, 116, 0.10), 0 1px 0 #fff1;
-    }
-    .usecases-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
-    }
-    .usecase-card {
-      background: var(--glass);
-      border-radius: var(--radius);
-      padding: 28px 20px;
-      box-shadow: 0 2px 12px #0002;
-      border: 1px solid var(--glass-border);
-      min-height: 180px;
-      backdrop-filter: var(--glass-blur);
-    }
-    .usecase-title {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .usecase-desc {
-      color: var(--muted);
-      font-size: 1rem;
-    }
-    .slider-section {
-      margin-bottom: 64px;
-      padding-top: 32px;
-    }
-    .slider-title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 40px;
-      text-align: center;
-      letter-spacing: 0.04em;
-      line-height: 1.15;
-      color: #fff;
-      text-shadow: 0 2px 16px rgba(73, 2, 116, 0.10), 0 1px 0 #fff1;
-    }
-    .slider {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-      overflow: hidden;
-      border-radius: var(--radius);
-      box-shadow: 0 4px 32px #0003;
-      background: var(--glass);
-      border: 1.5px solid var(--glass-border);
-      backdrop-filter: var(--glass-blur);
-      min-height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .slider-img {
-      width: 100%;
-      max-height: 420px;
-      object-fit: contain;
-      border-radius: var(--radius);
-      transition: opacity 0.5s cubic-bezier(.4,0,.2,1);
-      box-shadow: 0 2px 16px #0002;
-      background: #20243a;
-      display: block;
-    }
-    .slider-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--glass);
-      border: 1.5px solid var(--glass-border);
-      color: var(--text);
-      font-size: 2.2rem;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 2;
-      transition: background 0.2s;
-      backdrop-filter: var(--glass-blur);
-      opacity: 0.85;
-    }
-    .slider-arrow:hover { background: var(--accent); color: #fff; }
-    .slider-arrow.left { left: 16px; }
-    .slider-arrow.right { right: 16px; }
-    .slider-arrow svg {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
-    }
-    .slider-dots {
-      position: absolute;
-      bottom: 18px;
-      left: 0; right: 0;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      z-index: 2;
-    }
-    .slider-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--muted);
-      opacity: 0.5;
-      cursor: pointer;
-      border: none;
-      transition: background 0.2s, opacity 0.2s;
-    }
-    .slider-dot.active {
-      background: var(--accent);
-      opacity: 1;
-    }
-    .testimonials {
-      margin: 64px 0 32px 0;
-    }
-    .testimonials-title {
-      font-size: 2.2rem;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 40px;
-      margin-top: 0;
-      letter-spacing: 0.04em;
-      line-height: 1.15;
-      color: #fff;
-      text-shadow: 0 2px 16px rgba(73, 2, 116, 0.10), 0 1px 0 #fff1;
-    }
-    .testimonials-slider {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-      overflow: hidden;
-      border-radius: var(--radius);
-      box-shadow: 0 4px 32px #0003;
-      background: var(--glass);
-      border: 1.5px solid var(--glass-border);
-      backdrop-filter: var(--glass-blur);
-      min-height: 260px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 0;
-    }
-    .testimonial-card {
-        background: var(--glass);
-        border-radius: var(--radius);
-        padding: 32px 24px 24px 24px;
-        box-shadow: 0 2px 16px #0002;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        min-width: 380px;
-        max-width: 600px;
-        width: 80%;
-        min-height: 200px;
-        backdrop-filter: var(--glass-blur);
-        position: relative;
-        opacity: 1;
-        transition: opacity 0.4s, transform 0.3s;
-        left: 0;
-        right: 0;
-        margin: 0 auto 32px;
-    }
-    .testimonial-card.inactive {
-      opacity: 0;
-      pointer-events: none;
-      position: absolute;
-      transform: translateY(20px);
-    }
-    .testimonial-profile {
-      display: flex;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-    .testimonial-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--hero-gradient);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-right: 16px;
-      box-shadow: 0 2px 8px #0002;
-    }
-    .testimonial-name {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--text);
-    }
-    .testimonial-date {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-left: 8px;
-    }
-    .testimonial-text {
-      color: var(--text);
-      font-size: 1.08rem;
-      margin-bottom: 0;
-      margin-top: 8px;
-    }
-    .testimonials-track {
-      display: flex;
-      will-change: transform;
-      gap: 0;
-      padding: 0;
-      width: 100%;
-      position: relative;
-      justify-content: center;
-      min-height: 250px;
-    }
-    .testimonials-dots {
-      position: absolute;
-      bottom: 18px;
-      left: 0; right: 0;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      z-index: 2;
-    }
-    .testimonials-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--muted);
-      opacity: 0.5;
-      cursor: pointer;
-      border: none;
-      transition: background 0.2s, opacity 0.2s;
-    }
-    .testimonials-dot.active {
-      background: var(--accent);
-      opacity: 1;
-    }
-    .testimonials-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--glass);
-      border: 1.5px solid var(--glass-border);
-      color: var(--text);
-      font-size: 2.2rem;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 2;
-      transition: background 0.2s;
-      backdrop-filter: var(--glass-blur);
-      opacity: 0.85;
-    }
-    .testimonials-arrow:hover { background: var(--accent); color: #fff; }
-    .testimonials-arrow.left { left: 16px; }
-    .testimonials-arrow.right { right: 16px; }
-    .testimonials-arrow svg {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
-    }
-    .footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 1rem;
-      padding: 32px 0 16px 0;
-      border-top: 1px solid var(--border);
-      margin-top: 64px;
-    }
-    @media (max-width: 1100px) {
-      .hero { flex-direction: column; gap: 32px; min-height: 520px; }
-      .hero-logo, .hero-video { margin-left: 0; margin-right: 0; }
-      .hero-content { align-items: center; text-align: center; }
-      .hero-title { justify-content: center; }
-      .testimonials-slider { max-width: 100vw; }
-      .testimonial-card { min-width: 320px; }
-    }
-    @media (max-width: 900px) {
-      .testimonials-slider { max-width: 100vw; }
-      .testimonial-card { min-width: 320px; }
-    }
-    @media (max-width: 700px) {
-      .hero { flex-direction: column; gap: 24px; }
-      .features, .usecases-grid, .slider, .why-grid { grid-template-columns: 1fr; }
-      .hero-logo, .hero-video { margin-left: 0; margin-right: 0; }
-      .testimonials-slider { max-width: 100vw; }
-      .testimonial-card { min-width: 90vw; max-width: 95vw; }
+    .carousel.carousel-slider .carousel-fixed-item {
+      width: auto;
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-[#181c24] to-[#232837] text-gray-100 min-h-screen font-sans">
-    <section class="hero fade-in flex flex-col md:flex-row items-center gap-10 p-8 rounded-2xl shadow-xl backdrop-blur-lg bg-opacity-60">
-      <div class="hero-content flex-1 max-w-xl">
-        <h1 class="hero-title text-5xl font-extrabold flex items-center gap-4">
-          FoxBlock
-          <span class="hero-logo-inline"><img src="./logo/logo.png" alt="FoxBlock logo" /></span>
-        </h1>
-        <div class="hero-desc text-lg text-gray-300 mb-4">Take control of your time. FoxBlock is a powerful, privacy-first Chrome extension for blocking distractions, building better digital habits, and boosting your productivity.</div>
-        <a href="https://chromewebstore.google.com/detail/foxblock-site-blocker-tas/oaoamlhjodjmokjddcihdcpdnpnjghlm/" target="_blank">
-          <button class="cta-btn bg-[var(--accent)] hover:bg-purple-800 text-white font-semibold py-3 px-6 rounded-lg flex items-center gap-2 shadow transition">
-            <img class="chrome-icon" src="./screenshots/chromeICO.webp" alt="Chrome icon" />Add to Chrome
-          </button>
-        </a>
+<body>
+  <div class="navbar-fixed">
+    <nav class="transparent">
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo">FoxBlock</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="https://chromewebstore.google.com/detail/foxblock-site-blocker-tas/oaoamlhjodjmokjddcihdcpdnpnjghlm/" target="_blank" class="waves-effect waves-light btn purple darken-2"><img src="./screenshots/chromeICO.webp" style="height:24px;width:24px;margin-right:8px;vertical-align:middle;">Add to Chrome</a></li>
+        </ul>
       </div>
-      <div class="hero-video rounded-xl overflow-hidden shadow-2xl max-w-xl w-full mt-6 md:mt-0">
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/P3AaNYmFsGY" title="FoxBlock Demo" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </section>
-  <div class="container mx-auto px-4 py-8">
-
-    <section class="why fade-in">
-      <div class="why-title text-center text-4xl font-bold mb-10">Why FoxBlock?</div>
-      <div class="why-grid grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        <div class="why-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
-          <div class="why-icon">🦊</div>
-          <div class="why-title-card">Stay Focused</div>
-          <div class="why-desc">Block distracting sites and apps to keep your attention where it matters most.</div>
-        </div>
-        <div class="why-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
-          <div class="why-icon">⚡</div>
-          <div class="why-title-card">Boost Productivity</div>
-          <div class="why-desc">Use Focus Mode and scheduling to maximize your output and minimize wasted time.</div>
-        </div>
-        <div class="why-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
-          <div class="why-icon">👨‍👩‍👧‍👦</div>
-          <div class="why-title-card">Parental Controls</div>
-          <div class="why-desc">Help your family develop healthy online habits with customizable controls and password protection.</div>
-        </div>
-        <div class="why-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
-          <div class="why-icon">🔒</div>
-          <div class="why-title-card">Privacy-First</div>
-          <div class="why-desc">All your data stays on your device. No accounts, no tracking, just pure productivity.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="features fade-in grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      <div class="feature-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
-        <img src="./illustrations/blockPage.png" alt="Block Sites" />
-        <div class="feature-title">Block Distracting Sites</div>
-        <div class="feature-desc">Easily block access to any website or domain. Stay focused by keeping distractions out of reach during work, study, or downtime.</div>
-      </div>
-      <div class="feature-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
-        <img src="./illustrations/focusSession.png" alt="Focus Mode" />
-        <div class="feature-title">Focus Mode</div>
-        <div class="feature-desc">Activate Focus Mode to block all distractions for a set period. Perfect for deep work, study sessions, or productivity sprints.</div>
-      </div>
-      <div class="feature-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
-        <img src="./illustrations/tasks.png" alt="Usage Stats" />
-        <div class="feature-title">Usage Stats & Progress</div>
-        <div class="feature-desc">Track your browsing time, see daily progress, and review your digital habits with clear, visual stats and progress bars.</div>
-      </div>
-      <div class="feature-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
-        <img src="./illustrations/blockPageCustomization.png" alt="Custom Block Page" />
-        <div class="feature-title">Custom Block Page</div>
-        <div class="feature-desc">Personalize your block page with motivational quotes, custom messages, or illustrations to keep you inspired and on track.</div>
-      </div>
-      <div class="feature-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
-        <img src="./illustrations/passwordProtection.png" alt="Password Protection" />
-        <div class="feature-title">Password Protection</div>
-        <div class="feature-desc">Lock your settings or block page with a password to prevent tampering and keep your focus plan secure.</div>
-      </div>
-      <div class="feature-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
-        <img src="./illustrations/schedule.png" alt="Scheduling" />
-        <div class="feature-title">Scheduling</div>
-        <div class="feature-desc">Set schedules for when sites are blocked or allowed. Automate your focus routine for workdays, weekends, or custom hours.</div>
-      </div>
-    </section>
-
-    <section class="testimonials fade-in mt-16">
-      <div class="testimonials-title text-center text-4xl font-bold mb-10">What Users Are Saying</div>
-      <div class="testimonials-slider" id="testimonials-slider">
-        <div class="testimonials-track" id="testimonials-track">
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">SS</div>
-              <div>
-                <span class="testimonial-name">Snape Severus</span>
-                <span class="testimonial-date">13 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">FoxBlock is a lifesaver! Seriously helps me stay off time-wasting sites when I should be working. Simple and effective.</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">JC</div>
-              <div>
-                <span class="testimonial-name">Jake Carter</span>
-                <span class="testimonial-date">13 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">FoxBlock has been exactly what I needed to stay focused. The Pomodoro timer, custom block schedules, and easy site blocking all work seamlessly. I really like the distraction insights since they helped me catch habits I didn't even notice. Even the free version offers a lot and the interface is clean and easy to use. Five stars without a doubt.</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">YV</div>
-              <div>
-                <span class="testimonial-name">YT V</span>
-                <span class="testimonial-date">13 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">This is amazing, extremely good looking UI and helps me a lot with my day to day work. 5 stars</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">MG</div>
-              <div>
-                <span class="testimonial-name">Marek Golebiewski</span>
-                <span class="testimonial-date">12 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">Super easy to set up, works just as described, love it!</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">AM</div>
-              <div>
-                <span class="testimonial-name">Alin Mt</span>
-                <span class="testimonial-date">4 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">I was amazed by this simple tool for managing your work and personal time</div>
-          </div>
-        </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">J</div>
-              <div>
-                <span class="testimonial-name">John</span>
-                <span class="testimonial-date">3 Jun 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">installed on Brave browser, works like charm.</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">KD</div>
-              <div>
-                <span class="testimonial-name">Katerina Diamant</span>
-                <span class="testimonial-date">29 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">This app is definitely a game changer for someone who easily gets distracted online and go down the rabbit hole for hours on end. I would highly recommend it to anyone looking at saving time and being more productive with their time</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">CA</div>
-              <div>
-                <span class="testimonial-name">Cam Appleton</span>
-                <span class="testimonial-date">28 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">I recently started using FoxBlock, and it's a game-changer! This Chrome extension is incredibly effective at blocking distracting websites, helping me stay focused on my tasks. The task manager feature is intuitive, allowing me to organize my work seamlessly. It’s user-friendly, customizable, and has boosted my productivity significantly. Highly recommend FoxBlock for anyone looking to stay on track!</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">ל</div>
-              <div>
-                <span class="testimonial-name">לירן בלומנברג</span>
-                <span class="testimonial-date">23 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">FoxBlock is a sleek and powerful productivity extension that makes staying focused surprisingly easy. With customizable block pages, insightful analytics, and a beautiful interface—including Dark Mode and background videos—it turns website blocking into a motivating experience. The sticky banner and Pomodoro tools are a smart touch, and password protection adds serious accountability. Highly recommended for anyone looking to cut distractions and boost their digital discipline.</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">AF</div>
-              <div>
-                <span class="testimonial-name">AJ Fabila</span>
-                <span class="testimonial-date">19 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">Awesome extension! This really helps with adblocking.</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">PV</div>
-              <div>
-                <span class="testimonial-name">Peter V</span>
-                <span class="testimonial-date">17 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">Working great ! Easy to use</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">MP</div>
-              <div>
-                <span class="testimonial-name">Marc-Olivier Poissant</span>
-                <span class="testimonial-date">14 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">Excellent!</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">OH</div>
-              <div>
-                <span class="testimonial-name">Omer Hefets</span>
-                <span class="testimonial-date">14 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">Perfect user experience, perfect for increased productivity!</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">SA</div>
-              <div>
-                <span class="testimonial-name">siniestro abogado</span>
-                <span class="testimonial-date">14 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">Nice, multi function tool, that allow a multitude of productivity related feature.
-I installed and started to use very often, kudos to the developer</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">JM</div>
-              <div>
-                <span class="testimonial-name">Juan Mackie</span>
-                <span class="testimonial-date">14 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">As someone who's always fighting off digital distractions (Hi, ADHD) , I stumbled upon FoxBlock.....game changer.</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">MC</div>
-              <div>
-                <span class="testimonial-name">Marcu Cristi</span>
-                <span class="testimonial-date">2 May 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">The most complete, efficient and easy to use website blocker found! I totally recommend it!</div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-profile">
-              <div class="testimonial-avatar">DC</div>
-              <div>
-                <span class="testimonial-name">Daniel Cristian</span>
-                <span class="testimonial-date">18 Apr 2025</span>
-              </div>
-            </div>
-            <div class="testimonial-text">The best blocking website extension ever!</div>
-          </div>
-        <div class="testimonials-arrow left" id="testimonials-prev">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-          </svg>
-        </div>
-        <div class="testimonials-arrow right" id="testimonials-next">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-          </svg>
-        </div>
-        <div class="testimonials-dots" id="testimonials-dots"></div>
-      </div>
-    </section>
-
-    <section class="slider-section fade-in mt-16">
-      <div class="slider-title text-center text-4xl font-bold mb-10">Screenshots & Illustrations</div>
-      <div class="slider" id="screenshot-slider">
-        <div class="slider-arrow left" id="slider-prev">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-          </svg>
-        </div>
-        <img class="slider-img" id="slider-img" src="./screenshots/2.png" alt="Screenshot 1" />
-        <div class="slider-arrow right" id="slider-next">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-          </svg>
-        </div>
-        <div class="slider-dots" id="slider-dots"></div>
-      </div>
-    </section>
-
-    <section class="usecases fade-in mt-16">
-      <div class="usecases-title text-center text-4xl font-bold mb-10">How FoxBlock Helps You</div>
-      <div class="usecases-grid grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        <div class="usecase-card bg-[var(--glass)] p-6 rounded-xl shadow-md backdrop-blur">
-          <div class="usecase-title">Stay Focused at Work</div>
-          <div class="usecase-desc">Block distracting sites and set time limits to maximize productivity during work hours.</div>
-        </div>
-        <div class="usecase-card bg-[var(--glass)] p-6 rounded-xl shadow-md backdrop-blur">
-          <div class="usecase-title">Support Healthy Study Habits</div>
-          <div class="usecase-desc">Limit social media and entertainment sites to avoid procrastination and improve study sessions.</div>
-        </div>
-        <div class="usecase-card bg-[var(--glass)] p-6 rounded-xl shadow-md backdrop-blur">
-          <div class="usecase-title">Parental Controls</div>
-          <div class="usecase-desc">Set daily limits and block inappropriate sites to help children develop healthy online routines.</div>
-        </div>
-        <div class="usecase-card bg-[var(--glass)] p-6 rounded-xl shadow-md backdrop-blur">
-          <div class="usecase-title">Customizable for Any Routine</div>
-          <div class="usecase-desc">Create custom block lists, schedules, and focus modes to fit your unique needs and goals.</div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer text-center py-8 text-sm text-gray-400">
-      <div>FoxBlock &copy; 2025</div>
-      <div style="margin-top:8px;">Not affiliated with Google or Chrome. All trademarks are property of their respective owners.</div>
-    </footer>
+    </nav>
   </div>
+
+  <div class="section hero">
+    <div class="container">
+      <h1 class="hero-title animate__animated animate__fadeIn">Stay Focused with FoxBlock</h1>
+      <p class="hero-sub">Block distracting sites, track your habits, and build better routines.</p>
+      <a href="https://chromewebstore.google.com/detail/foxblock-site-blocker-tas/oaoamlhjodjmokjddcihdcpdnpnjghlm/" target="_blank" class="btn-large purple accent-3">Add to Chrome</a>
+    </div>
+  </div>
+
+  <div class="section" id="features">
+    <div class="container">
+      <h2 class="center-align">Powerful Features</h2>
+      <div class="row">
+        <div class="col s12 m6 l4">
+          <div class="card hoverable reveal">
+            <div class="card-image">
+              <img src="./illustrations/blockPage.png" alt="Block Sites"/>
+            </div>
+            <div class="card-content">
+              <span class="card-title">Block Distracting Sites</span>
+              <p>Easily block access to any website or domain to keep distractions out of reach.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="card hoverable reveal">
+            <div class="card-image">
+              <img src="./illustrations/focusSession.png" alt="Focus Mode"/>
+            </div>
+            <div class="card-content">
+              <span class="card-title">Focus Mode</span>
+              <p>Activate Focus Mode to block all distractions for a set period of deep work.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="card hoverable reveal">
+            <div class="card-image">
+              <img src="./illustrations/tasks.png" alt="Usage Stats"/>
+            </div>
+            <div class="card-content">
+              <span class="card-title">Usage Stats & Progress</span>
+              <p>Track your browsing time and review habits with clear, visual statistics.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="card hoverable reveal">
+            <div class="card-image">
+              <img src="./illustrations/blockPageCustomization.png" alt="Custom Block Page"/>
+            </div>
+            <div class="card-content">
+              <span class="card-title">Custom Block Page</span>
+              <p>Personalize your block page with motivational quotes or custom messages.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="card hoverable reveal">
+            <div class="card-image">
+              <img src="./illustrations/passwordProtection.png" alt="Password Protection"/>
+            </div>
+            <div class="card-content">
+              <span class="card-title">Password Protection</span>
+              <p>Lock your settings with a password to prevent tampering.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6 l4">
+          <div class="card hoverable reveal">
+            <div class="card-image">
+              <img src="./illustrations/schedule.png" alt="Scheduling"/>
+            </div>
+            <div class="card-content">
+              <span class="card-title">Scheduling</span>
+              <p>Automate your focus routine with daily or weekly block schedules.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="screenshots">
+    <div class="container">
+      <h2 class="center-align">Screenshots</h2>
+      <div class="carousel carousel-slider center" data-indicators="true">
+        <div class="carousel-item" href="#one!"><img src="./screenshots/2.png" alt="Screenshot 1"></div>
+        <div class="carousel-item" href="#two!"><img src="./screenshots/3.png" alt="Screenshot 2"></div>
+        <div class="carousel-item" href="#three!"><img src="./screenshots/4.png" alt="Screenshot 3"></div>
+        <div class="carousel-item" href="#four!"><img src="./screenshots/5.png" alt="Screenshot 4"></div>
+        <div class="carousel-item" href="#five!"><img src="./screenshots/6.png" alt="Screenshot 5"></div>
+        <div class="carousel-item" href="#six!"><img src="./screenshots/7.png" alt="Screenshot 6"></div>
+      </div>
+    </div>
+  </div>
+  <div class="section" id="testimonials">
+    <div class="container">
+      <h2 class="center-align">What Users Say</h2>
+      <div class="carousel carousel-slider center" data-indicators="true">
+        <div class="carousel-item white-text" href="#t1">
+          <h5>Snape Severus <small>13 May 2025</small></h5>
+          <p>FoxBlock is a lifesaver! Seriously helps me stay off time-wasting sites when I should be working. Simple and effective.</p>
+        </div>
+        <div class="carousel-item white-text" href="#t2">
+          <h5>Jake Carter <small>13 May 2025</small></h5>
+          <p>FoxBlock has been exactly what I needed to stay focused. The Pomodoro timer, custom block schedules, and easy site blocking all work seamlessly.</p>
+        </div>
+        <div class="carousel-item white-text" href="#t3">
+          <h5>YT V <small>13 May 2025</small></h5>
+          <p>This is amazing, extremely good looking UI and helps me a lot with my day to day work. 5 stars.</p>
+        </div>
+        <div class="carousel-item white-text" href="#t4">
+          <h5>Marek Golebiewski <small>12 May 2025</small></h5>
+          <p>Super easy to set up, works just as described, love it!</p>
+        </div>
+        <div class="carousel-item white-text" href="#t5">
+          <h5>Alin Mt <small>4 May 2025</small></h5>
+          <p>I was amazed by this simple tool for managing your work and personal time.</p>
+        </div>
+        <div class="carousel-item white-text" href="#t6">
+          <h5>John <small>3 Jun 2025</small></h5>
+          <p>installed on Brave browser, works like charm.</p>
+        </div>
+        <div class="carousel-item white-text" href="#t7">
+          <h5>Katerina Diamant <small>29 May 2025</small></h5>
+          <p>This app is definitely a game changer for someone who easily gets distracted online and goes down the rabbit hole for hours on end.</p>
+        </div>
+        <div class="carousel-item white-text" href="#t8">
+          <h5>Cam Appleton <small>28 May 2025</small></h5>
+          <p>I recently started using FoxBlock, and it's a game-changer! The task manager feature is intuitive, customizable, and has boosted my productivity.</p>
+        </div>
+        <div class="carousel-item white-text" href="#t9">
+          <h5>לירן בלומנברג <small>23 May 2025</small></h5>
+          <p>FoxBlock is a sleek and powerful productivity extension that makes staying focused surprisingly easy.</p>
+        </div>
+        <div class="carousel-item white-text" href="#t10">
+          <h5>AJ Fabila <small>19 May 2025</small></h5>
+          <p>Awesome extension! This really helps with adblocking.</p>
+        </div>
+        <div class="carousel-item white-text" href="#t11">
+          <h5>Peter V <small>17 May 2025</small></h5>
+          <p>Working great! Easy to use.</p>
+        </div>
+        <div class="carousel-item white-text" href="#t12">
+          <h5>Marc-Olivier Poissant <small>14 May 2025</small></h5>
+          <p>Excellent!</p>
+        </div>
+        <div class="carousel-item white-text" href="#t13">
+          <h5>Omer Hefets <small>14 May 2025</small></h5>
+          <p>Perfect user experience, perfect for increased productivity!</p>
+        </div>
+        <div class="carousel-item white-text" href="#t14">
+          <h5>siniestro abogado <small>14 May 2025</small></h5>
+          <p>Nice, multi function tool, that allow a multitude of productivity related feature.</p>
+        </div>
+        <div class="carousel-item white-text" href="#t15">
+          <h5>Juan Mackie <small>14 May 2025</small></h5>
+          <p>As someone who's always fighting off digital distractions, I stumbled upon FoxBlock.....game changer.</p>
+        </div>
+        <div class="carousel-item white-text" href="#t16">
+          <h5>Marcu Cristi <small>2 May 2025</small></h5>
+          <p>The most complete, efficient and easy to use website blocker found! I totally recommend it!</p>
+        </div>
+        <div class="carousel-item white-text" href="#t17">
+          <h5>Daniel Cristian <small>18 Apr 2025</small></h5>
+          <p>The best blocking website extension ever!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="usecases">
+    <div class="container">
+      <h2 class="center-align">How FoxBlock Helps</h2>
+      <div class="row">
+        <div class="col s12 m6 l3">
+          <div class="card-panel grey darken-4 center-align reveal">
+            <h6>Stay Focused at Work</h6>
+            <p>Block distracting sites and set time limits to maximize productivity.</p>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel grey darken-4 center-align reveal">
+            <h6>Support Healthy Study Habits</h6>
+            <p>Limit social media and entertainment sites to avoid procrastination.</p>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel grey darken-4 center-align reveal">
+            <h6>Parental Controls</h6>
+            <p>Set daily limits and block inappropriate sites for children.</p>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card-panel grey darken-4 center-align reveal">
+            <h6>Customizable for Any Routine</h6>
+            <p>Create block lists, schedules, and focus modes tailored to your needs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer purple darken-4">
+    <div class="container center-align">
+      <p>FoxBlock © 2025</p>
+      <p>Not affiliated with Google or Chrome. All trademarks are property of their respective owners.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script>
-    // Fade-in and slide-up on load and scroll
-    function revealOnScroll() {
-      const reveals = document.querySelectorAll('.fade-in');
-      const windowHeight = window.innerHeight;
-      for (const el of reveals) {
-        const top = el.getBoundingClientRect().top;
-        if (top < windowHeight - 60) {
-          el.style.opacity = 1;
-          el.classList.add('animate__animated','animate__fadeInUp');
-        }
-      }
-    }
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(revealOnScroll, 100);
+    document.addEventListener('DOMContentLoaded', function() {
+      var carousels = document.querySelectorAll('.carousel');
+      M.Carousel.init(carousels, { fullWidth: true, indicators: true });
     });
 
-    // Screenshot slider
-    const screenshots = [
-      './screenshots/2.png',
-      './screenshots/3.png',
-      './screenshots/4.png',
-      './screenshots/5.png',
-      './screenshots/6.png',
-      './screenshots/7.png',
-    ];
-    let current = 0;
-    const img = document.getElementById('slider-img');
-    const prev = document.getElementById('slider-prev');
-    const next = document.getElementById('slider-next');
-    const dots = document.getElementById('slider-dots');
-    function updateSlider(idx) {
-      img.style.opacity = 0;
-      setTimeout(() => {
-        img.src = screenshots[idx];
-        img.alt = `Screenshot ${idx+1}`;
-        img.style.opacity = 1;
-        Array.from(dots.children).forEach((d, i) => d.classList.toggle('active', i === idx));
-      }, 200);
-    }
-    function goto(idx) {
-      current = (idx + screenshots.length) % screenshots.length;
-      updateSlider(current);
-    }
-    prev.onclick = () => goto(current - 1);
-    next.onclick = () => goto(current + 1);
-    // Dots
-    screenshots.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-      dot.onclick = () => goto(i);
-      dots.appendChild(dot);
+    document.querySelectorAll('.reveal').forEach(el => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate__animated','animate__fadeInUp');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      observer.observe(el);
     });
-    // Swipe support
-    let startX = null;
-    img.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-    img.addEventListener('touchend', e => {
-      if (startX === null) return;
-      const dx = e.changedTouches[0].clientX - startX;
-      if (dx > 40) goto(current - 1);
-      if (dx < -40) goto(current + 1);
-      startX = null;
-    });
-
-    // Testimonials slider
-    const testimonials = Array.from(document.querySelectorAll('.testimonial-card'));
-    const testimonialsTrack = document.getElementById('testimonials-track');
-    const testimonialsDots = document.getElementById('testimonials-dots');
-    const testimonialsPrev = document.getElementById('testimonials-prev');
-    const testimonialsNext = document.getElementById('testimonials-next');
-    let testimonialsCurrent = 0;
-    
-    function testimonialsPerView() {
-      return 1; // Always show 1 testimonial at a time
-    }
-    
-    function updateTestimonialsSlider(idx) {
-      const perView = testimonialsPerView();
-      const maxIdx = testimonials.length - perView;
-      testimonialsCurrent = Math.max(0, Math.min(idx, maxIdx));
-      
-      // Position testimonials - no transform needed as we're using absolute positioning
-      testimonials.forEach((card, i) => {
-        if (i === testimonialsCurrent) {
-          card.classList.remove('inactive');
-          card.style.position = 'relative';
-          card.style.transform = 'translateY(0)';
-        } else {
-          card.classList.add('inactive');
-          card.style.position = 'absolute';
-          card.style.transform = 'translateY(20px)';
-        }
-      });
-      
-      Array.from(testimonialsDots.children).forEach((d, i) => {
-        d.classList.toggle('active', i === testimonialsCurrent);
-      });
-    }
-    
-    function gotoTestimonial(idx) {
-      updateTestimonialsSlider(idx);
-    }
-    
-    function setupTestimonialsSlider() {
-      testimonialsDots.innerHTML = '';
-      const maxIdx = testimonials.length - 1;
-      
-      for (let i = 0; i <= maxIdx; i++) {
-        const dot = document.createElement('button');
-        dot.className = 'testimonials-dot' + (i === 0 ? ' active' : '');
-        dot.onclick = () => gotoTestimonial(i);
-        testimonialsDots.appendChild(dot);
-      }
-      
-      updateTestimonialsSlider(0);
-    }
-    
-    testimonialsPrev.onclick = () => gotoTestimonial(testimonialsCurrent - 1);
-    testimonialsNext.onclick = () => gotoTestimonial(testimonialsCurrent + 1);
-    window.addEventListener('resize', setupTestimonialsSlider);
-    window.addEventListener('DOMContentLoaded', setupTestimonialsSlider);
   </script>
 </body>
-</html> 
+</html>
