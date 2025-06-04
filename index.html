@@ -7,6 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
       --bg: #181c24;
@@ -35,8 +37,7 @@
     }
     a { color: var(--accent); text-decoration: none; }
     .container { max-width: 1200px; margin: 0 auto; padding: 32px 16px; }
-    .fade-in { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
-    .fade-in.visible { opacity: 1; transform: none; }
+    .fade-in { opacity: 0; }
     .hero {
         position: relative;
         display: flex;
@@ -547,40 +548,45 @@
     }
   </style>
 </head>
-<body>
-    <section class="hero fade-in">
-      <div class="hero-content">
-        <h1 class="hero-title">FoxBlock
+<body class="bg-gradient-to-br from-[#181c24] to-[#232837] text-gray-100 min-h-screen font-sans">
+    <section class="hero fade-in flex flex-col md:flex-row items-center gap-10 p-8 rounded-2xl shadow-xl backdrop-blur-lg bg-opacity-60">
+      <div class="hero-content flex-1 max-w-xl">
+        <h1 class="hero-title text-5xl font-extrabold flex items-center gap-4">
+          FoxBlock
           <span class="hero-logo-inline"><img src="./logo/logo.png" alt="FoxBlock logo" /></span>
         </h1>
-        <div class="hero-desc">Take control of your time. FoxBlock is a powerful, privacy-first Chrome extension for blocking distractions, building better digital habits, and boosting your productivity.</div>
-        <a href="https://chromewebstore.google.com/detail/foxblock-site-blocker-tas/oaoamlhjodjmokjddcihdcpdnpnjghlm/" target="_blank"><button class="cta-btn"><img class="chrome-icon" src="./screenshots/chromeICO.webp" alt="Chrome icon" />Add to Chrome</button></a>
+        <div class="hero-desc text-lg text-gray-300 mb-4">Take control of your time. FoxBlock is a powerful, privacy-first Chrome extension for blocking distractions, building better digital habits, and boosting your productivity.</div>
+        <a href="https://chromewebstore.google.com/detail/foxblock-site-blocker-tas/oaoamlhjodjmokjddcihdcpdnpnjghlm/" target="_blank">
+          <button class="cta-btn bg-[var(--accent)] hover:bg-purple-800 text-white font-semibold py-3 px-6 rounded-lg flex items-center gap-2 shadow transition">
+            <img class="chrome-icon" src="./screenshots/chromeICO.webp" alt="Chrome icon" />Add to Chrome
+          </button>
+        </a>
       </div>
-      <div class="hero-video">
+      <div class="hero-video rounded-xl overflow-hidden shadow-2xl max-w-xl w-full mt-6 md:mt-0">
         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/P3AaNYmFsGY" title="FoxBlock Demo" frameborder="0" allowfullscreen></iframe>
       </div>
     </section>
-  <div class="container">
+  <div class="container mx-auto px-4 py-8">
 
     <section class="why fade-in">
-      <div class="why-title">Why FoxBlock?</div>
-      <div class="why-grid">
-        <div class="why-card">
+      <div class="why-title text-center text-4xl font-bold mb-10">Why FoxBlock?</div>
+      <div class="why-grid grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div class="why-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
           <div class="why-icon">🦊</div>
           <div class="why-title-card">Stay Focused</div>
           <div class="why-desc">Block distracting sites and apps to keep your attention where it matters most.</div>
         </div>
-        <div class="why-card">
+        <div class="why-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
           <div class="why-icon">⚡</div>
           <div class="why-title-card">Boost Productivity</div>
           <div class="why-desc">Use Focus Mode and scheduling to maximize your output and minimize wasted time.</div>
         </div>
-        <div class="why-card">
+        <div class="why-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
           <div class="why-icon">👨‍👩‍👧‍👦</div>
           <div class="why-title-card">Parental Controls</div>
           <div class="why-desc">Help your family develop healthy online habits with customizable controls and password protection.</div>
         </div>
-        <div class="why-card">
+        <div class="why-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
           <div class="why-icon">🔒</div>
           <div class="why-title-card">Privacy-First</div>
           <div class="why-desc">All your data stays on your device. No accounts, no tracking, just pure productivity.</div>
@@ -588,41 +594,41 @@
       </div>
     </section>
 
-    <section class="features fade-in">
-      <div class="feature-card">
+    <section class="features fade-in grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="feature-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
         <img src="./illustrations/blockPage.png" alt="Block Sites" />
         <div class="feature-title">Block Distracting Sites</div>
         <div class="feature-desc">Easily block access to any website or domain. Stay focused by keeping distractions out of reach during work, study, or downtime.</div>
       </div>
-      <div class="feature-card">
+      <div class="feature-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
         <img src="./illustrations/focusSession.png" alt="Focus Mode" />
         <div class="feature-title">Focus Mode</div>
         <div class="feature-desc">Activate Focus Mode to block all distractions for a set period. Perfect for deep work, study sessions, or productivity sprints.</div>
       </div>
-      <div class="feature-card">
+      <div class="feature-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
         <img src="./illustrations/tasks.png" alt="Usage Stats" />
         <div class="feature-title">Usage Stats & Progress</div>
         <div class="feature-desc">Track your browsing time, see daily progress, and review your digital habits with clear, visual stats and progress bars.</div>
       </div>
-      <div class="feature-card">
+      <div class="feature-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
         <img src="./illustrations/blockPageCustomization.png" alt="Custom Block Page" />
         <div class="feature-title">Custom Block Page</div>
         <div class="feature-desc">Personalize your block page with motivational quotes, custom messages, or illustrations to keep you inspired and on track.</div>
       </div>
-      <div class="feature-card">
+      <div class="feature-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
         <img src="./illustrations/passwordProtection.png" alt="Password Protection" />
         <div class="feature-title">Password Protection</div>
         <div class="feature-desc">Lock your settings or block page with a password to prevent tampering and keep your focus plan secure.</div>
       </div>
-      <div class="feature-card">
+      <div class="feature-card bg-[var(--glass)] p-6 rounded-xl text-center shadow-md backdrop-blur">
         <img src="./illustrations/schedule.png" alt="Scheduling" />
         <div class="feature-title">Scheduling</div>
         <div class="feature-desc">Set schedules for when sites are blocked or allowed. Automate your focus routine for workdays, weekends, or custom hours.</div>
       </div>
     </section>
 
-    <section class="testimonials fade-in">
-      <div class="testimonials-title">What Users Are Saying</div>
+    <section class="testimonials fade-in mt-16">
+      <div class="testimonials-title text-center text-4xl font-bold mb-10">What Users Are Saying</div>
       <div class="testimonials-slider" id="testimonials-slider">
         <div class="testimonials-track" id="testimonials-track">
           <div class="testimonial-card">
@@ -690,8 +696,8 @@
       </div>
     </section>
 
-    <section class="slider-section fade-in">
-      <div class="slider-title">Screenshots & Illustrations</div>
+    <section class="slider-section fade-in mt-16">
+      <div class="slider-title text-center text-4xl font-bold mb-10">Screenshots & Illustrations</div>
       <div class="slider" id="screenshot-slider">
         <div class="slider-arrow left" id="slider-prev">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -708,29 +714,29 @@
       </div>
     </section>
 
-    <section class="usecases fade-in">
-      <div class="usecases-title">How FoxBlock Helps You</div>
-      <div class="usecases-grid">
-        <div class="usecase-card">
+    <section class="usecases fade-in mt-16">
+      <div class="usecases-title text-center text-4xl font-bold mb-10">How FoxBlock Helps You</div>
+      <div class="usecases-grid grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div class="usecase-card bg-[var(--glass)] p-6 rounded-xl shadow-md backdrop-blur">
           <div class="usecase-title">Stay Focused at Work</div>
           <div class="usecase-desc">Block distracting sites and set time limits to maximize productivity during work hours.</div>
         </div>
-        <div class="usecase-card">
+        <div class="usecase-card bg-[var(--glass)] p-6 rounded-xl shadow-md backdrop-blur">
           <div class="usecase-title">Support Healthy Study Habits</div>
           <div class="usecase-desc">Limit social media and entertainment sites to avoid procrastination and improve study sessions.</div>
         </div>
-        <div class="usecase-card">
+        <div class="usecase-card bg-[var(--glass)] p-6 rounded-xl shadow-md backdrop-blur">
           <div class="usecase-title">Parental Controls</div>
           <div class="usecase-desc">Set daily limits and block inappropriate sites to help children develop healthy online routines.</div>
         </div>
-        <div class="usecase-card">
+        <div class="usecase-card bg-[var(--glass)] p-6 rounded-xl shadow-md backdrop-blur">
           <div class="usecase-title">Customizable for Any Routine</div>
           <div class="usecase-desc">Create custom block lists, schedules, and focus modes to fit your unique needs and goals.</div>
         </div>
       </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer text-center py-8 text-sm text-gray-400">
       <div>FoxBlock &copy; 2025</div>
       <div style="margin-top:8px;">Not affiliated with Google or Chrome. All trademarks are property of their respective owners.</div>
     </footer>
@@ -743,7 +749,8 @@
       for (const el of reveals) {
         const top = el.getBoundingClientRect().top;
         if (top < windowHeight - 60) {
-          el.classList.add('visible');
+          el.style.opacity = 1;
+          el.classList.add('animate__animated','animate__fadeInUp');
         }
       }
     }
