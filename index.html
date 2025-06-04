@@ -48,6 +48,63 @@
     .carousel.carousel-slider .carousel-fixed-item {
       width: auto;
     }
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+    .feature-card {
+      position: relative;
+      padding: 32px 24px;
+      border-radius: 12px;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      background: #1d2330;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(60deg,#ff7a18,#af002d 40%,#319197 70%,#6e0dd0);
+      background-size: 200% 200%;
+      animation: gradientShift 8s ease infinite;
+      opacity: .3;
+      z-index: 0;
+    }
+    .feature-card .icon-wrapper {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      backdrop-filter: blur(6px);
+    }
+    .feature-card .icon-wrapper img {
+      width: 56px;
+      height: 56px;
+      transform: rotateX(20deg) rotateY(-20deg);
+      filter: drop-shadow(0 6px 8px rgba(0,0,0,0.4));
+    }
+    .feature-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .feature-card > * {
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
   </style>
 </head>
 <body>
@@ -73,71 +130,47 @@
   <div class="section" id="features">
     <div class="container">
       <h2 class="center-align">Powerful Features</h2>
-      <div class="row">
+      <div class="row features-grid">
         <div class="col s12 m6 l4">
-          <div class="card hoverable reveal">
-            <div class="card-image">
-              <img src="./illustrations/blockPage.png" alt="Block Sites"/>
-            </div>
-            <div class="card-content">
-              <span class="card-title">Block Distracting Sites</span>
-              <p>Easily block access to any website or domain to keep distractions out of reach.</p>
-            </div>
+          <div class="feature-card reveal">
+            <div class="icon-wrapper"><img src="./illustrations/blockPage.png" alt="Block Sites"/></div>
+            <h5 class="feature-title">Block Distracting Sites</h5>
+            <p>Easily block access to any website or domain to keep distractions out of reach.</p>
           </div>
         </div>
         <div class="col s12 m6 l4">
-          <div class="card hoverable reveal">
-            <div class="card-image">
-              <img src="./illustrations/focusSession.png" alt="Focus Mode"/>
-            </div>
-            <div class="card-content">
-              <span class="card-title">Focus Mode</span>
-              <p>Activate Focus Mode to block all distractions for a set period of deep work.</p>
-            </div>
+          <div class="feature-card reveal">
+            <div class="icon-wrapper"><img src="./illustrations/focusSession.png" alt="Focus Mode"/></div>
+            <h5 class="feature-title">Focus Mode</h5>
+            <p>Activate Focus Mode to block all distractions for a set period of deep work.</p>
           </div>
         </div>
         <div class="col s12 m6 l4">
-          <div class="card hoverable reveal">
-            <div class="card-image">
-              <img src="./illustrations/tasks.png" alt="Usage Stats"/>
-            </div>
-            <div class="card-content">
-              <span class="card-title">Usage Stats & Progress</span>
-              <p>Track your browsing time and review habits with clear, visual statistics.</p>
-            </div>
+          <div class="feature-card reveal">
+            <div class="icon-wrapper"><img src="./illustrations/tasks.png" alt="Usage Stats"/></div>
+            <h5 class="feature-title">Usage Stats & Progress</h5>
+            <p>Track your browsing time and review habits with clear, visual statistics.</p>
           </div>
         </div>
         <div class="col s12 m6 l4">
-          <div class="card hoverable reveal">
-            <div class="card-image">
-              <img src="./illustrations/blockPageCustomization.png" alt="Custom Block Page"/>
-            </div>
-            <div class="card-content">
-              <span class="card-title">Custom Block Page</span>
-              <p>Personalize your block page with motivational quotes or custom messages.</p>
-            </div>
+          <div class="feature-card reveal">
+            <div class="icon-wrapper"><img src="./illustrations/blockPageCustomization.png" alt="Custom Block Page"/></div>
+            <h5 class="feature-title">Custom Block Page</h5>
+            <p>Personalize your block page with motivational quotes or custom messages.</p>
           </div>
         </div>
         <div class="col s12 m6 l4">
-          <div class="card hoverable reveal">
-            <div class="card-image">
-              <img src="./illustrations/passwordProtection.png" alt="Password Protection"/>
-            </div>
-            <div class="card-content">
-              <span class="card-title">Password Protection</span>
-              <p>Lock your settings with a password to prevent tampering.</p>
-            </div>
+          <div class="feature-card reveal">
+            <div class="icon-wrapper"><img src="./illustrations/passwordProtection.png" alt="Password Protection"/></div>
+            <h5 class="feature-title">Password Protection</h5>
+            <p>Lock your settings with a password to prevent tampering.</p>
           </div>
         </div>
         <div class="col s12 m6 l4">
-          <div class="card hoverable reveal">
-            <div class="card-image">
-              <img src="./illustrations/schedule.png" alt="Scheduling"/>
-            </div>
-            <div class="card-content">
-              <span class="card-title">Scheduling</span>
-              <p>Automate your focus routine with daily or weekly block schedules.</p>
-            </div>
+          <div class="feature-card reveal">
+            <div class="icon-wrapper"><img src="./illustrations/schedule.png" alt="Scheduling"/></div>
+            <h5 class="feature-title">Scheduling</h5>
+            <p>Automate your focus routine with daily or weekly block schedules.</p>
           </div>
         </div>
       </div>
