@@ -88,7 +88,9 @@
             Effortless Website Blocking
           </h3>
           <p class="feature-description">
-            Instantly block any distracting website. Manage your personal blocklist with ease and take control of your digital habits.
+            Instantly block any distracting website. <br>
+            Manage your personal blocklist easily. <br>
+            Take control of digital habits.
           </p>
           <div class="feature-stats">
             <div class="stat">
@@ -109,8 +111,9 @@
             Integrated Focus Timer
           </h3>
           <p class="feature-description">
-            Utilize the proven Pomodoro Technique with customizable focus and break cycles. 
-            Perfect for maintaining peak productivity and healthy work habits.
+            Utilize the proven Pomodoro Technique <br>
+            with customizable focus and breaks. <br>
+            Perfect for maintaining peak productivity.
           </p>
           <div class="feature-highlights">
             <span class="highlight">Pomodoro Technique</span>
@@ -131,8 +134,10 @@
             Task Management
           </h3>
           <p class="feature-description">
-            Create, prioritize, and track your to-dos right in your browser. 
-            Drag-and-drop organization, deadline setting, and progress tracking keep you accountable and focused on what matters most.
+            Create, prioritize, and track tasks <br>
+            right in your browser. <br>
+            Drag-and-drop organization keeps you <br>
+            accountable and focused daily.
           </p>
           <div class="feature-metrics">
             <div class="metric-bar">
@@ -153,15 +158,13 @@
             Inspirational Block Page
           </h3>
           <p class="feature-description">
-            Stay motivated even when a site is blocked—set a custom title and short inspirational message, 
-            and choose stunning background videos, images from Unsplash, or upload your own.
+            Stay motivated when sites blocked. <br>
+            Set custom titles and messages. <br>
+            Choose videos, images, or uploads.
           </p>
           <div class="feature-gallery">
             <div class="gallery-item">
               <div class="sprite-icon sprite-block-customization"></div>
-            </div>
-            <div class="gallery-item">
-              <div class="sprite-icon sprite-password-protection"></div>
             </div>
             <div class="gallery-item">
               <div class="sprite-icon sprite-schedule"></div>
@@ -543,7 +546,7 @@
         <span class="title-main">From Chaos to Control</span>
       </h2>
       <p class="section-subtitle">
-        Join thousands who've reclaimed their focus and transformed their digital habits
+        Join those who've already reclaimed their focus and transformed their digital habits
       </p>
     </div>
     
@@ -561,57 +564,65 @@
       <div class="journey-steps">
         <div class="journey-card active" data-step="1">
           <div class="card-number">01</div>
-          <div class="card-icon">🔍</div>
-          <h3 class="card-title">Discover Your Triggers</h3>
+          <div class="card-icon">
+            <div class="modern-icon schedule-icon"></div>
+          </div>
+          <h3 class="card-title">Schedule Your Focus</h3>
           <p class="card-description">
-            Identify which sites steal your focus with built-in analytics. 
-            See exactly where your time goes and what breaks your flow.
+            Set custom blocking schedules for specific days and times. 
+            Automatically block distracting sites during work&nbsp;hours or study sessions with intelligent scheduling.
           </p>
           <div class="card-insight">
-            <span class="insight-stat">Average user discovers</span>
-            <span class="insight-number">12 distraction sites</span>
+            <span class="insight-stat">Schedule blocking for</span>
+            <span class="insight-number">Work&nbsp;hours</span>
           </div>
         </div>
         
         <div class="journey-card" data-step="2">
           <div class="card-number">02</div>
-          <div class="card-icon">⚡</div>
-          <h3 class="card-title">Block & Focus</h3>
+          <div class="card-icon">
+            <div class="modern-icon usage-icon"></div>
+          </div>
+          <h3 class="card-title">Control Usage Limits</h3>
           <p class="card-description">
-            Instantly block distracting sites and activate focus sessions. 
-            Use custom schedules and Pomodoro timers to maintain momentum.
+            Set daily time limits per site (5&nbsp;min–4&nbsp;hr) and get visual alerts as you approach your limits. 
+            Yellow warnings and red alerts keep you aware of your usage patterns.
           </p>
           <div class="card-insight">
-            <span class="insight-stat">Users save an average of</span>
-            <span class="insight-number">3.2 hours daily</span>
+            <span class="insight-stat">Time limits from</span>
+            <span class="insight-number">5min&nbsp;-&nbsp;4hrs</span>
           </div>
         </div>
         
         <div class="journey-card" data-step="3">
-          <div class="card-icon">📊</div>
+          <div class="card-icon">
+            <div class="modern-icon security-icon"></div>
+          </div>
           <div class="card-number">03</div>
-          <h3 class="card-title">Track & Optimize</h3>
+          <h3 class="card-title">Lock Down with Passwords</h3>
           <p class="card-description">
-            Monitor your progress with detailed insights. 
-            See blocked attempts, focus streaks, and productivity patterns.
+            Enable password protection for your settings to prevent easy bypassing. 
+            Secure your blocked sites and schedules—making it harder to break your commitment.
           </p>
           <div class="card-insight">
-            <span class="insight-stat">Productivity improvement</span>
-            <span class="insight-number">+85% average</span>
+            <span class="insight-stat">Extra security layer</span>
+            <span class="insight-number">Password&nbsp;protect</span>
           </div>
         </div>
         
         <div class="journey-card" data-step="4">
           <div class="card-number">04</div>
-          <div class="card-icon">🎯</div>
-          <h3 class="card-title">Master Your Habits</h3>
+          <div class="card-icon">
+            <div class="modern-icon tasks-icon"></div>
+          </div>
+          <h3 class="card-title">Manage Tasks Seamlessly</h3>
           <p class="card-description">
-            Achieve sustainable focus with optimized routines. 
-            Build lasting productivity habits that stick.
+            Create, prioritize, and track your to-dos directly in your browser. 
+            Drag-and-drop organization, deadline setting, and progress tracking keep you accountable.
           </p>
           <div class="card-insight">
-            <span class="insight-stat">Long-term success rate</span>
-            <span class="insight-number">92% of users</span>
+            <span class="insight-stat">Built-in productivity</span>
+            <span class="insight-number">Task&nbsp;manager</span>
           </div>
         </div>
       </div>
@@ -850,6 +861,184 @@
       
       // Initialize slider
       updateSlider();
+
+      // Interactive Journey Timeline
+      const journeyCards = document.querySelectorAll('.journey-card');
+      const indicators = document.querySelectorAll('.indicator');
+      const progressLine = document.querySelector('.progress-line');
+
+      // Add click handlers to journey cards
+      journeyCards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+          // Remove active class from all cards and indicators
+          journeyCards.forEach(c => c.classList.remove('active'));
+          indicators.forEach(i => i.classList.remove('active'));
+          
+          // Add active class to clicked card and corresponding indicator
+          card.classList.add('active');
+          indicators[index].classList.add('active');
+          
+          // Update progress line width
+          const progressPercentage = ((index + 1) / journeyCards.length) * 100;
+          progressLine.style.setProperty('--progress-width', `${progressPercentage}%`);
+        });
+      });
+
+      // Add click handlers to indicators
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          // Remove active class from all cards and indicators
+          journeyCards.forEach(c => c.classList.remove('active'));
+          indicators.forEach(i => i.classList.remove('active'));
+          
+          // Add active class to corresponding card and indicator
+          journeyCards[index].classList.add('active');
+          indicator.classList.add('active');
+          
+          // Update progress line width
+          const progressPercentage = ((index + 1) / journeyCards.length) * 100;
+          progressLine.style.setProperty('--progress-width', `${progressPercentage}%`);
+        });
+      });
+
+      // Cursor-following morphing gradient with edge case handling
+      const morphingGradient = document.querySelector('.morphing-gradient');
+      if (morphingGradient) {
+        let isElementVisible = false;
+        let animationId = null;
+        let lastMouseX = 0;
+        let lastMouseY = 0;
+        
+        // Throttle function for performance
+        function throttle(func, limit) {
+          let inThrottle;
+          return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+              func.apply(context, args);
+              inThrottle = true;
+              setTimeout(() => inThrottle = false, limit);
+            }
+          }
+        }
+        
+        // Check if element is in viewport
+        function checkVisibility() {
+          const rect = morphingGradient.getBoundingClientRect();
+          isElementVisible = rect.top < window.innerHeight && 
+                           rect.bottom > 0 && 
+                           rect.left < window.innerWidth && 
+                           rect.right > 0;
+        }
+        
+        // Calculate and apply rotation
+        function updateRotation(clientX, clientY) {
+          if (!isElementVisible) return;
+          
+          if (animationId) {
+            cancelAnimationFrame(animationId);
+          }
+          
+          animationId = requestAnimationFrame(() => {
+            try {
+              const rect = morphingGradient.getBoundingClientRect();
+              
+              // Additional safety check
+              if (rect.width === 0 || rect.height === 0) return;
+              
+              const centerX = rect.left + rect.width / 2;
+              const centerY = rect.top + rect.height / 2;
+              
+              const deltaX = clientX - centerX;
+              const deltaY = clientY - centerY;
+              
+              // Calculate distance to avoid unnecessary updates when cursor is very close
+              const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+              if (distance < 10) return; // Skip if cursor too close to center
+              
+              // Calculate angle in degrees
+              const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+              
+              // Apply gradient rotation with error handling
+              morphingGradient.style.setProperty('--gradient-rotation', `${angle}deg`);
+            } catch (error) {
+              console.warn('Morphing gradient rotation error:', error);
+            }
+          });
+        }
+        
+        // Mouse move handler with throttling
+        const handleMouseMove = throttle((e) => {
+          lastMouseX = e.clientX;
+          lastMouseY = e.clientY;
+          updateRotation(e.clientX, e.clientY);
+        }, 16); // ~60fps
+        
+        // Touch move handler for mobile devices
+        const handleTouchMove = throttle((e) => {
+          if (e.touches && e.touches.length > 0) {
+            const touch = e.touches[0];
+            lastMouseX = touch.clientX;
+            lastMouseY = touch.clientY;
+            updateRotation(touch.clientX, touch.clientY);
+          }
+        }, 16);
+        
+        // Scroll and resize handlers
+        const handleViewportChange = throttle(() => {
+          checkVisibility();
+          if (isElementVisible && lastMouseX && lastMouseY) {
+            updateRotation(lastMouseX, lastMouseY);
+          }
+        }, 100);
+        
+        // Initial visibility check
+        checkVisibility();
+        
+        // Event listeners with passive option for performance
+        document.addEventListener('mousemove', handleMouseMove, { passive: true });
+        document.addEventListener('touchmove', handleTouchMove, { passive: true });
+        window.addEventListener('scroll', handleViewportChange, { passive: true });
+        window.addEventListener('resize', handleViewportChange, { passive: true });
+        
+        // Intersection Observer for more efficient visibility detection
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              isElementVisible = entry.isIntersecting;
+            });
+          }, {
+            threshold: 0.1,
+            rootMargin: '50px'
+          });
+          
+          observer.observe(morphingGradient);
+        }
+        
+        // Handle page visibility changes
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            if (animationId) {
+              cancelAnimationFrame(animationId);
+              animationId = null;
+            }
+          } else {
+            checkVisibility();
+          }
+        });
+        
+        // Cleanup function (if needed for SPA)
+        window.morphingGradientCleanup = () => {
+          document.removeEventListener('mousemove', handleMouseMove);
+          document.removeEventListener('touchmove', handleTouchMove);
+          window.removeEventListener('scroll', handleViewportChange);
+          window.removeEventListener('resize', handleViewportChange);
+          if (animationId) {
+            cancelAnimationFrame(animationId);
+          }
+        };
+      }
     });
   </script>
 </body>
